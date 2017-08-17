@@ -1,11 +1,14 @@
 FROM alpine:3.6
 
-MAINTAINER Alessandro Molari <alessandro.molari@yoroi.company> (alem0lars)
+MAINTAINER Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)
 
 # == BASIC SOFTWARE ============================================================
 
 RUN apk update \
  && apk upgrade
+
+# Tools (useful when inspecting the container)
+RUN apk add --update --no-cache vim bash-completion
 
 # == ENV / PARAMS ==============================================================
 
@@ -14,14 +17,9 @@ ENV MURMUR_HOME /home/murmur
 
 ENV MURMUR_CFG_FILE $MURMUR_HOME/murmur.cfg
 
-ENV DEFAULT_WORKDIR /tmp
-WORKDIR $DEFAULT_WORKDIR
-
 # == USER ======================================================================
 
 RUN adduser -D $MURMUR_USER -h $MURMUR_HOME -s /bin/bash
-
-# == DEPENDENCIES ==============================================================
 
 # == APP =======================================================================
 
@@ -49,11 +47,7 @@ ADD dist/rsyslog.conf /etc/rsyslog.d/90-murmur.conf
 
 RUN apk add --update --no-cache supervisor
 
-ADD dist/supervisord.ini /etc/supervisor.d/supervisord.ini
-
-# == TOOLS (useful when inspecting the container) ==============================
-
-RUN apk add --update --no-cache vim bash-completion
+ADD dist/supervisord.conf /etc/supervisord.conf
 
 # == ENTRYPOINT ================================================================
 
