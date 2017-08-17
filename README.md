@@ -4,7 +4,7 @@ Docker image for murmur (mumble server)
 
 ## Version
 
-1.0.0
+1.0.1
 
 ## Initial setup
 
