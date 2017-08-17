@@ -8,7 +8,7 @@ RUN apk update \
  && apk upgrade
 
 # Tools (useful when inspecting the container)
-RUN apk add --update --no-cache vim bash-completion
+RUN apk add --update --no-cache vim bash-completion sqlite
 
 # == ENV / PARAMS ==============================================================
 
@@ -24,6 +24,7 @@ RUN adduser -D $MURMUR_USER -h $MURMUR_HOME -s /bin/bash
 
 # == APP =======================================================================
 
+RUN apk add --update --no-cache icu
 RUN apk add --update --no-cache murmur
 RUN mkdir -p $MURMUR_DATA_DIR
 RUN chown $MURMUR_USER:$MURMUR_USER $MURMUR_DATA_DIR
