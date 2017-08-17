@@ -25,7 +25,7 @@ docker run -d -p 64738:64738 -p 64738:64738/udp -v murmur-data:/home/murmur/data
 ### Superuser password
 
 ```
-docker exec -it murmur murmurd '$MURMUR_CFG_FILE' -supw 'PASSWORD'
+docker exec -it murmur murmurd -ini /home/murmur/murmur.cfg -supw 'PASSWORD'
 ```
 
 ### Server password
