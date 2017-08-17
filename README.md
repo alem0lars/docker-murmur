@@ -17,7 +17,7 @@ docker volume create murmur-data
 Execute:
 
 ```
-docker run -d -p 64738:64738 -p 64738:64738/udp -v murmur-data:/data -e MURMUR_SUPERUSER_PASSWORD=<password> --name murmur alem0lars/murmur
+docker run -d -p 64738:64738 -p 64738:64738/udp -v murmur-data:/home/murmur/data --name murmur alem0lars/murmur
 ```
 
 ## Notes
