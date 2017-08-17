@@ -22,6 +22,12 @@ docker run -d -p 64738:64738 -p 64738:64738/udp -v murmur-data:/home/murmur/data
 
 ## Notes
 
+### Superuser password
+
+```
+docker exec -it murmur murmurd '$MURMUR_CFG_FILE' -supw 'PASSWORD'
+```
+
 ### Server password
 
 If you want to set the server password, change the configuration file and then
